@@ -8,7 +8,8 @@ A professional, modern, and highly-responsive portfolio website built with **Rea
 
 Hi, I'm **Praveen R**, a passionate **Java Developer** and IT professional based in Bengaluru. This portfolio showcases my journey, my skills in backend and frontend development, and the projects I've built.
 
-**Live Link**: [https://github.com/praveenit2026/Portfolio](https://github.com/praveenit2026/Portfolio)
+**Live Link**: [https://praveendeveloper.vercel.app](https://praveendeveloper.vercel.app)
+**Repository**: [https://github.com/praveenit2026/Portfolio](https://github.com/praveenit2026/Portfolio)
 
 ---
 
