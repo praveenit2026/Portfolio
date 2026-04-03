@@ -5,6 +5,15 @@ import { ExternalLink, Github, Folder, CheckCircle } from 'lucide-react';
 
 const projects = [
   {
+    title: 'Resume Parser',
+    status: 'Completed',
+    category: 'Full Stack',
+    description: 'An AI-powered Resume Parser that intelligently extracts and analyzes key information from resumes. It parses candidate details like skills, experience, and education, enabling faster and smarter recruitment workflows with a clean, modern interface.',
+    techStack: ['Python', 'React', 'FastAPI', 'NLP', 'Supabase'],
+    liveDemo: null,
+    github: 'https://github.com/praveenit2026/Resume-Parser',
+  },
+  {
     title: 'Farm to Shop',
     status: 'Completed',
     category: 'Web App',
@@ -24,7 +33,7 @@ const projects = [
   },
 ];
 
-const categories = ['All', 'Web App'];
+const categories = ['All', 'Full Stack', 'Web App'];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
