@@ -142,32 +142,30 @@ const ProjectsSection = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 relative z-10">
                       {project.liveDemo && (
-                        <motion.a
+                        <a
                           href={project.liveDemo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-black text-xs font-bold transition-all duration-300 shadow-[0_0_12px_rgba(34,197,94,0.3)]"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-black text-xs font-bold transition-all duration-300 shadow-[0_0_12px_rgba(34,197,94,0.3)] hover:opacity-90"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
                           Live Demo
-                        </motion.a>
+                        </a>
                       )}
                       {project.github && (
-                        <motion.a
+                        <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => e.stopPropagation()}
                           className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 text-xs font-bold transition-all duration-300 hover:border-primary/60 hover:text-primary"
                         >
                           <Github className="w-3.5 h-3.5" />
                           GitHub
-                        </motion.a>
+                        </a>
                       )}
                       {!project.liveDemo && !project.github && (
                         <span className="text-sm text-muted-foreground italic opacity-60">Private Project</span>
