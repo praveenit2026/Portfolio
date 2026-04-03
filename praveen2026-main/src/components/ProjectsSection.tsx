@@ -91,14 +91,14 @@ const ProjectsSection = () => {
                 <motion.a
                   key={project.title}
                   layout
-                  href={project.github || undefined}
-                  target={project.github ? '_blank' : undefined}
-                  rel={project.github ? 'noopener noreferrer' : undefined}
+                  href={project.liveDemo || project.github || undefined}
+                  target={project.liveDemo || project.github ? '_blank' : undefined}
+                  rel={project.liveDemo || project.github ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
-                  className={`glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col ${project.github ? 'cursor-pointer' : 'cursor-default'}`}
+                  className={`glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col ${project.liveDemo || project.github ? 'cursor-pointer' : 'cursor-default'}`}
                   whileHover={{ y: -10 }}
                 >
                   {/* Project Header */}
