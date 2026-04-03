@@ -7,7 +7,7 @@ const projects = [
   {
     title: 'Resume Parser',
     status: 'Completed',
-    category: 'Full Stack',
+    category: 'Web App',
     description: 'An AI-powered Resume Parser that intelligently extracts and analyzes key information from resumes. It parses candidate details like skills, experience, and education, enabling faster and smarter recruitment workflows with a clean, modern interface.',
     techStack: ['Python', 'React', 'FastAPI', 'NLP', 'Supabase'],
     liveDemo: null,
@@ -33,7 +33,7 @@ const projects = [
   },
 ];
 
-const categories = ['All', 'Full Stack', 'Web App'];
+const categories = ['All', 'Web App'];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -88,14 +88,17 @@ const ProjectsSection = () => {
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
-                <motion.div
+                <motion.a
                   key={project.title}
                   layout
+                  href={project.github || undefined}
+                  target={project.github ? '_blank' : undefined}
+                  rel={project.github ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
-                  className="glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col"
+                  className={`glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col ${project.github ? 'cursor-pointer' : 'cursor-default'}`}
                   whileHover={{ y: -10 }}
                 >
                   {/* Project Header */}
@@ -172,7 +175,7 @@ const ProjectsSection = () => {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </AnimatePresence>
           </motion.div>
