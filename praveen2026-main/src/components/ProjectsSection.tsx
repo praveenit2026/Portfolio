@@ -10,7 +10,7 @@ const projects = [
     category: 'Web App',
     description: 'An AI-powered Resume Parser that intelligently extracts and analyzes key information from resumes. It parses candidate details like skills, experience, and education, enabling faster and smarter recruitment workflows with a clean, modern interface.',
     techStack: ['Python', 'React', 'FastAPI', 'NLP', 'Supabase'],
-    liveDemo: null,
+    liveDemo: 'https://resume-parser-ivory.vercel.app',
     github: 'https://github.com/praveenit2026/Resume-Parser',
   },
   {
