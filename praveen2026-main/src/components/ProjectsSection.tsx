@@ -88,17 +88,14 @@ const ProjectsSection = () => {
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
-                <motion.a
+                <motion.div
                   key={project.title}
                   layout
-                  href={project.liveDemo || project.github || undefined}
-                  target={project.liveDemo || project.github ? '_blank' : undefined}
-                  rel={project.liveDemo || project.github ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
-                  className={`glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col ${project.liveDemo || project.github ? 'cursor-pointer' : 'cursor-default'}`}
+                  className="glass-card group overflow-hidden hover:border-primary/50 transition-all duration-500 glow-border h-full flex flex-col"
                   whileHover={{ y: -10 }}
                 >
                   {/* Project Header */}
@@ -145,16 +142,17 @@ const ProjectsSection = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-3">
                       {project.liveDemo && (
                         <motion.a
                           href={project.liveDemo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ x: 3, color: "#22C55E" }}
-                          className="flex items-center gap-1 text-sm text-muted-foreground transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-black text-xs font-bold transition-all duration-300 shadow-[0_0_12px_rgba(34,197,94,0.3)]"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-3.5 h-3.5" />
                           Live Demo
                         </motion.a>
                       )}
@@ -163,10 +161,11 @@ const ProjectsSection = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ x: 3, color: "#22C55E" }}
-                          className="flex items-center gap-1 text-sm text-muted-foreground transition-colors"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 text-zinc-300 text-xs font-bold transition-all duration-300 hover:border-primary/60 hover:text-primary"
                         >
-                          <Github className="w-4 h-4" />
+                          <Github className="w-3.5 h-3.5" />
                           GitHub
                         </motion.a>
                       )}
@@ -175,7 +174,7 @@ const ProjectsSection = () => {
                       )}
                     </div>
                   </div>
-                </motion.a>
+                </motion.div>
               ))}
             </AnimatePresence>
           </motion.div>
