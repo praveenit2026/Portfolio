@@ -50,8 +50,8 @@ const AboutSection = () => {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
                 {[
                   { value: "0", label: "Years Experience" },
-                  { value: "1+", label: "Projects Completed" },
-                  { value: "1", label: "Certifications" }
+                  { value: "3+", label: "Projects Completed" },
+                  { value: "4", label: "Certifications" }
                 ].map((stat, i) => (
                   <ScrollReveal key={stat.label} delay={0.4 + i * 0.1}>
                     <motion.div 
