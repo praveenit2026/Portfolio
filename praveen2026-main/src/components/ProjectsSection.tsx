@@ -36,9 +36,9 @@ const projects = [
     status: 'Completed',
     category: 'Web App',
     description: 'A smart inventory management system designed to track stock levels and avoid expired products. It helps businesses efficiently manage their inventory, reduce waste, and ensure product freshness through automated alerts and real-time monitoring.',
-    techStack: ['Java', 'SQL'],
-    liveDemo: null,
-    github: null,
+    techStack: ['Java', 'SQL', 'HTML', 'CSS', 'JavaScript'],
+    liveDemo: 'https://smartinventory-vito.onrender.com',
+    github: 'https://github.com/praveenit2026/SmartInventory',
   },
 ];
 
