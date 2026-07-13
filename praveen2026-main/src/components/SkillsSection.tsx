@@ -30,7 +30,7 @@ const skillCategories = [
   {
     title: 'AI Tools',
     icon: Bot,
-    skills: ['ChatGPT', 'GitHub Copilot'],
+    skills: ['ChatGPT', 'GitHub Copilot', 'Antigravity', 'Claude'],
     color: 'from-primary via-teal to-[#54FF2C]',
   },
 ];
