@@ -18,7 +18,7 @@ const projects = [
     status: 'Completed',
     category: 'Web App',
     description: 'A modern, responsive online food ordering web application that allows users to search for restaurants, browse menus, manage a live shopping cart, and place orders. Fully containerized and optimized for performance.',
-    techStack: ['Java EE', 'Servlets', 'JSP', 'MySQL', 'Docker', 'Tomcat'],
+    techStack: ['Java', 'Java EE', 'Servlets', 'JSP', 'MySQL', 'Docker', 'Tomcat'],
     liveDemo: 'https://food-app-fi6d.onrender.com',
     github: 'https://github.com/praveenit2026/food-app',
   },
