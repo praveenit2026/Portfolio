@@ -28,8 +28,8 @@ const projects = [
     category: 'Web App',
     description: 'Farm to Shop is a digital platform that connects farmers directly with shopkeepers, enabling direct product listing, ordering, and communication. It helps reduce middlemen, ensures fair pricing for farmers, and provides fresh products to retailers through a streamlined supply chain.',
     techStack: ['Java', 'HTML', 'CSS'],
-    liveDemo: null,
-    github: null,
+    liveDemo: 'https://farm2shop.onrender.com/',
+    github: 'https://github.com/praveenit2026/Farm2Shop',
   },
   {
     title: 'Smart Inventory Control System',

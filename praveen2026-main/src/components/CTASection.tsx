@@ -52,7 +52,7 @@ const CTASection = () => {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://drive.google.com/file/d/1GiGKa0MWpRswM-7sUQjYOjFXgR9-Fb1R/view?usp=sharing"
+              href="https://drive.google.com/file/d/12wNUAjwbAekY-aIVOurZD4aoLUt-6GGq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-lg border border-primary/50 text-foreground font-semibold text-lg transition-all duration-300 hover:bg-primary/10 hover:border-primary glow-border"
