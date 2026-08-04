@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Calendar, Award } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { GraduationCap, MapPin, Calendar, Award, X, ExternalLink } from 'lucide-react';
 
 const education = [
   {
@@ -24,14 +25,39 @@ const education = [
 const certifications = [
   {
     name: 'Cloud Computing',
-    platform: 'NPTEL',
+    platform: 'NPTEL | IIT Kharagpur',
     date: '2024',
-    skills: ['Cloud'],
+    skills: ['Cloud Computing', 'Virtualization', 'Infrastructure as a Service', 'IIT Kharagpur'],
     type: 'certification',
+    score: '83%',
+    image: '/certificates/cloud_computing.jpg',
+    link: 'https://drive.google.com/file/d/1bhYSPn5ehEIlK924LeZMhmwGvXtpxDWm/view?usp=sharing',
+  },
+  {
+    name: 'Software Project Management',
+    platform: 'NPTEL | IIT Kharagpur',
+    date: '2025',
+    skills: ['Project Management', 'Estimation', 'Software Quality', 'IIT Kharagpur'],
+    type: 'certification',
+    score: '70%',
+    image: '/certificates/software_project_management.jpg',
+    link: 'https://drive.google.com/file/d/1p5D5l3vNsqiP5919mJlTMFOE2hUAVQ2l/view?usp=sharing',
+  },
+  {
+    name: 'Foundation of Cloud IoT Edge ML',
+    platform: 'NPTEL | IIT Kanpur',
+    date: '2025',
+    skills: ['Cloud IoT', 'Edge Computing', 'Machine Learning', 'IIT Kanpur'],
+    type: 'certification',
+    score: '79%',
+    image: '/certificates/cloud_iot_edge_ml.jpg',
+    link: 'https://drive.google.com/file/d/1Ur2MZVFL9oN15N-Ce7S8MW8Q2gYtuFl7/view?usp=sharing',
   },
 ];
 
 const EducationSection = () => {
+  const [modalCert, setModalCert] = useState<typeof certifications[0] | null>(null);
+
   return (
     <section id="education" className="py-20 md:py-32 relative overflow-hidden">
       <motion.div 
@@ -144,26 +170,35 @@ const EducationSection = () => {
                         } transform -translate-x-1/2 md:translate-x-0 z-20`} 
                       />
                       
+                      {/* Clean Certification Card matching Education exactly in size and layout */}
                       <motion.div 
                         className="glass-card p-6 ml-8 md:ml-0 hover:border-primary/50 transition-all duration-300 glow-border"
                         whileHover={{ y: -5, scale: 1.01 }}
                       >
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h4 className="text-xl font-bold text-white mb-2">{cert.name}</h4>
-                            <p className="text-zinc-300">{cert.platform}</p>
-                          </div>
-                          <span className="text-sm text-zinc-500 font-bold">{cert.date}</span>
+                        <div className="flex items-center gap-2 text-primary text-sm mb-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>{cert.date}</span>
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                          {cert.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-bold border border-primary/20"
-                            >
-                              {skill}
+                        <h4 className="text-xl font-bold text-white mb-2">{cert.name}</h4>
+                        <p className="text-lg text-zinc-300 mb-2">{cert.platform}</p>
+                        <div className="flex flex-wrap items-center gap-4 text-zinc-500 text-sm">
+                          {cert.score && (
+                            <span className="flex items-center gap-1">
+                              <Award className="w-4 h-4" />
+                              Score: {cert.score}
                             </span>
-                          ))}
+                          )}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setModalCert(cert);
+                            }}
+                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-zinc-950 bg-primary hover:bg-primary/95 transition-all duration-200 cursor-pointer relative z-30 shadow-[0_0_12px_rgba(34,197,94,0.2)]"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>View Certificate</span>
+                          </button>
                         </div>
                       </motion.div>
                     </div>
@@ -174,6 +209,73 @@ const EducationSection = () => {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Certificate Modal / Lightbox */}
+      <AnimatePresence>
+        {modalCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            style={{ background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(8px)' }}
+            onClick={() => setModalCert(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 30 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+              className="relative max-w-3xl w-full rounded-2xl overflow-hidden"
+              style={{ border: '1px solid hsl(142 100% 50% / 0.3)', boxShadow: '0 0 60px hsl(142 100% 50% / 0.15)' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal header */}
+              <div className="flex items-center justify-between px-5 py-4" style={{ background: 'hsl(222 47% 8% / 0.98)', borderBottom: '1px solid hsl(142 100% 50% / 0.15)' }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'hsl(142 100% 50% / 0.15)', border: '1px solid hsl(142 100% 50% / 0.3)' }}>
+                    <Award className="w-4 h-4 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">{modalCert.name}</p>
+                    <p className="text-zinc-400 text-xs">{modalCert.platform} · {modalCert.date}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setModalCert(null)}
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Certificate Image */}
+              <div className="relative w-full overflow-y-auto max-h-[70vh] bg-white flex items-center justify-center">
+                <img
+                  src={modalCert.image}
+                  alt={`${modalCert.name} Certificate`}
+                  className="w-full h-auto object-contain block"
+                />
+              </div>
+
+              {/* Modal footer */}
+              <div className="flex items-center justify-between px-5 py-3" style={{ background: 'hsl(222 47% 8% / 0.98)', borderTop: '1px solid hsl(142 100% 50% / 0.15)' }}>
+                <span className="text-zinc-400 text-xs">Score: <span className="text-primary font-bold">{modalCert.score}</span></span>
+                <a
+                  href={modalCert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-white transition-colors"
+                >
+                  Open in new tab
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

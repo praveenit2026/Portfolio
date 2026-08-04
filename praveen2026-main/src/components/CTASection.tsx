@@ -6,18 +6,12 @@ const CTASection = () => {
 
   return (
     <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://image2url.com/r2/default/images/1770444263150-0f5db095-7e5b-4bdd-8155-4e7934c8ceff.png"
-          alt="CTA Background"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/60" />
+      {/* Decorative CSS background — no image */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-primary/4 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[100px]" />
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div
