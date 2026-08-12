@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ScrollReveal } from './ScrollReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GraduationCap, MapPin, Calendar, Award, X, ExternalLink } from 'lucide-react';
@@ -57,6 +57,20 @@ const certifications = [
 
 const EducationSection = () => {
   const [modalCert, setModalCert] = useState<typeof certifications[0] | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Preload certificate images
+  useEffect(() => {
+    certifications.forEach((cert) => {
+      const img = new Image();
+      img.src = cert.image;
+    });
+  }, []);
+
+  // Reset image loaded state when modal certificate changes
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [modalCert]);
 
   return (
     <section id="education" className="py-20 md:py-32 relative overflow-hidden">
@@ -251,11 +265,19 @@ const EducationSection = () => {
               </div>
 
               {/* Certificate Image */}
-              <div className="relative w-full overflow-y-auto max-h-[70vh] bg-white flex items-center justify-center">
+              <div className="relative w-full overflow-y-auto max-h-[70vh] min-h-[300px] bg-zinc-950 flex items-center justify-center">
+                {!imageLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-zinc-950/80">
+                    <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+                  </div>
+                )}
                 <img
                   src={modalCert.image}
                   alt={`${modalCert.name} Certificate`}
-                  className="w-full h-auto object-contain block"
+                  onLoad={() => setImageLoaded(true)}
+                  className={`w-full h-auto object-contain block transition-opacity duration-300 ${
+                    imageLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
                 />
               </div>
 
